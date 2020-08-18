@@ -1,4 +1,4 @@
-# netflix-clone
+# movie-site
 
 ## Project setup
 ```
