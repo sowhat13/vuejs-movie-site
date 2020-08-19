@@ -1,7 +1,7 @@
 <template>
   <div class="home">
 
-      <div class="populartitle font-bold text-5xl mt-12">Popular Movies  
+      <div class="populartitle font-bold text-5xl mt-20">Popular Movies  
 
       </div>
 
@@ -131,11 +131,14 @@ cursor:pointer;
 -moz-box-shadow: inset 0px 0px 5px 1px $darkercolor;
 box-shadow: inset 0px 0px 5px 1px $darkercolor;
 -webkit-box-shadow: inset 0px 0px 5px 1px $darkercolor;
-
-padding-top:20px;
-padding-bottom:20px;
+padding: 30px 0 30px 0px;
 border-radius:$radius;
 margin:15px;
+}
+
+.moviesall:hover {
+animation: scaleup 0.3s forwards;
+  
 }
 
 .moviecomp {
@@ -153,10 +156,10 @@ cursor: pointer;
 
 min-height: 350px;
 max-height:350px;
-
+border-top: dashed 0.5px $darkercolor;
 -webkit-box-shadow: inset 1px 5px 5px 1px $normalcolor, 0px 3px 0px 3px $darkercolor;
--moz-box-shadow: inset 1px 5px 5px 1px $normalcolor, 0px 3px 0px 3px $darkercolor;
-box-shadow: inset 1px 5px 5px 1px $normalcolor, 0px 3px 0px 3px $darkercolor;
+-moz-box-shadow: inset 1px 15px 15px 1px $normalcolor, 0px 3px 0px 3px $darkercolor;
+box-shadow: inset 1px 15px 15px 2px $normalcolor, 0px 4px 0px 3px $darkercolor;
 }
 
 .movieposter {
@@ -192,10 +195,10 @@ text-align: center;
 margin-right:auto;
 margin-left:auto;
 
--webkit-box-shadow: 0px -5px 0px 3px $darkercolor;
--moz-box-shadow: 0px -5px 0px 3px $darkercolor;
-box-shadow: inset 1px -1px 5px 1px $normalcolor,  0px -5px 0px 3px $darkercolor;
-border-bottom:2px $darkercolor dashed;
+-webkit-box-shadow: inset 11px -1px 75px 10px $normalcolor,  0px -3px 0px 3px $darkercolor;
+-moz-box-shadow: inset 11px -1px 75px 10px $normalcolor,  0px -3px 0px 3px $darkercolor;
+box-shadow: inset 11px -1px 75px 10px $normalcolor,  0px  -1px 0px 3px $darkercolor;
+border-bottom:3px $darkercolor dashed;
 
   cursor:pointer;
 
@@ -222,21 +225,6 @@ border-bottom:2px $darkercolor dashed;
  0% {
     -webkit-transform: rotate(0);
             transform: rotate(0);
-    -webkit-transform-origin: top right;
-            transform-origin: top right;
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-            transform: rotate(360deg);
-    -webkit-transform-origin: top right;
-            transform-origin: top right;
-  }
-}
-
-@keyframes cutup {
- 0% {
-    -webkit-transform: rotate(0);
-            transform: rotate(0);
     -webkit-transform-origin: bottom right;
             transform-origin: bottom right;
   }
@@ -247,6 +235,38 @@ border-bottom:2px $darkercolor dashed;
             transform-origin: bottom right;
   }
 }
+
+@keyframes cutup {
+ 0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+        
+
+  }
+  100% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+           
+  }
+}
+
+@keyframes scaleup {
+  0% {
+  
+    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+  }
+  100% {
+
+    -webkit-box-shadow: 0 0 20px 0px rgba(255, 255, 255, 0.35);
+            box-shadow: 0 0 30px 5px rgba(0, 0, 0, 0.164);
+  }
+}
+
 
 
 
@@ -286,7 +306,7 @@ text-shadow: $shadow;
 background-color:$darkcolor;
 -webkit-box-shadow: inset 1px -5px 5px 0.5px $normalcolor, 0px 3px 0px 3px $darkercolor;
 -moz-box-shadow: inset 1px -5px 5px 0.5px $normalcolor, 0px 3px 0px 3px $darkercolor;
-box-shadow: inset 1px -5px 5px 0.5px $normalcolor, 0px 3px 0px 3px $darkercolor;
+box-shadow: inset 0px -16px 15px -1px $normalcolor, 0px 3px 0px 3px $darkercolor;
 }
 
 
