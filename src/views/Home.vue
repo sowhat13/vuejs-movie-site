@@ -7,16 +7,18 @@
 
       <div class="movieshow grid  lg:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-6">
 
-<div v-for="film in movie" :key="film" >
- <div  class="mt-12 mx-auto moviecomp">
-
-   <div class="movietitle">
+<div  v-for="film in movie" :key="film" >
+  <div class="moviesall">
+    <div class="movietitle mt-12">
 
   {{film.name || film.title }}
 </div>
+ <div  class=" mx-auto moviecomp">
+
+ 
 
 <img class="movieposter w-48 " :src="`https://image.tmdb.org/t/p/original${film.poster_path}` ">
-   <div class="movietitle">
+   <div class="movietitle2">
 <i class="fas fa-calendar-day mr-2"></i>
   {{film.first_air_date || film.release_date}}  
 </div>
@@ -47,7 +49,7 @@
 
 </div>
 </div>
- 
+      </div>
    
   </div>
 </template>
@@ -106,40 +108,135 @@ body {
   color: white !important;
   display:flex;
   justify-content: center;
-  background: $lightercolor url("https://svgsilh.com/svg/331553.svg")    ;
-box-shadow: inset 5em 5em rgba(255, 163, 198, 0.95);
+box-shadow: inset 5em 5em rgba(246, 177, 195, 0.95);
 text-shadow: 3px 3px $normalcolor, 5px 5px $darkcolor;
   background-size: 250px;
 text-align: center;
 font-family: 'Do Hyeon', sans-serif;
 letter-spacing: 15px;
+margin-bottom: 35px;
+}
 
+.moviesall {
+    animation-name: turn;
+animation-duration: 2s;
+cursor:pointer;
+-moz-box-shadow: inset 0px 0px 5px 1px $darkercolor;
+box-shadow: inset 0px 0px 5px 1px $darkercolor;
+-webkit-box-shadow: inset 0px 0px 5px 1px $darkercolor;
+
+padding-top:0.02px;
+padding-bottom:20px;
+
+margin:15px;
 }
 
 .moviecomp {
+
   background-color: $darkcolor;
 padding: 15px 25px;
-border-radius:10px 10px 0 0;
+
+padding-top:5px;
 width:15.5rem !important;
 display:flex;
 flex-direction: column;
 align-items: center;
 text-align: center;
+cursor: pointer;
 
-min-height: 400px;
-max-height:400px;
+min-height: 350px;
+max-height:350px;
 
--webkit-box-shadow: 0px 5px 0px 5px $darkercolor;
--moz-box-shadow: 0px 5px 0px 5px $darkercolor;
-box-shadow: 0px 5px 0px 5px $darkercolor;
+-webkit-box-shadow: inset 1px 5px 5px 1px $normalcolor, 0px 3px 0px 3px $darkercolor;
+-moz-box-shadow: inset 1px 5px 5px 1px $normalcolor, 0px 3px 0px 3px $darkercolor;
+box-shadow: inset 1px 5px 5px 1px $normalcolor, 0px 3px 0px 3px $darkercolor;
 }
 
 .movieposter {
   border-radius: $radius;
+  margin-top:5px;
 
 }
 
 .movietitle {
+  display:flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  color:$lightercolor;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 15px;
+  min-height: 70px;
+  max-height:70px;
+text-shadow: $shadow;
+
+  background-color: $darkcolor;
+padding: 15px 25px;
+
+border-radius:10px 10px 0 0;
+width:15.5rem !important;
+
+align-items: center;
+text-align: center;
+
+
+margin-right:auto;
+margin-left:auto;
+
+-webkit-box-shadow: 0px -5px 0px 3px $darkercolor;
+-moz-box-shadow: 0px -5px 0px 3px $darkercolor;
+box-shadow: inset 1px -1px 5px 1px $normalcolor,  0px -5px 0px 3px $darkercolor;
+border-bottom:2px $darkercolor dashed;
+
+  cursor:pointer;
+
+}
+
+@keyframes turn {
+  from { filter:grayscale(100%)}
+  to {  filter:grayscale(0%)}
+}
+
+@-webkit-keyframes cutup {
+ 0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    -webkit-transform-origin: top right;
+            transform-origin: top right;
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+    -webkit-transform-origin: top right;
+            transform-origin: top right;
+  }
+}
+
+@keyframes cutup {
+ 0% {
+    -webkit-transform: rotate(0);
+            transform: rotate(0);
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+  }
+  100% {
+    -webkit-transform: rotate(30deg);
+            transform: rotate(30deg);
+    -webkit-transform-origin: bottom right;
+            transform-origin: bottom right;
+  }
+}
+
+
+
+.moviesall:hover .movietitle {
+animation: cutup 0.5s forwards;
+}
+
+
+.movietitle2 {
   display:flex;
   text-align: center;
   justify-content: center;
@@ -154,6 +251,7 @@ box-shadow: 0px 5px 0px 5px $darkercolor;
   max-height:40px;
 text-shadow: $shadow;
 
+
 }
 
 .desc {
@@ -167,9 +265,9 @@ border-radius:0 0 10px 10px;
 min-width:90px !important;
 text-shadow: $shadow;
 background-color:$darkcolor;
--webkit-box-shadow: 0px 5px 0px 5px $darkercolor;
--moz-box-shadow: 0px 5px 0px 5px $darkercolor;
-box-shadow: 0px 5px 0px 5px $darkercolor;
+-webkit-box-shadow: inset 1px -5px 5px 0.5px $normalcolor, 0px 3px 0px 3px $darkercolor;
+-moz-box-shadow: inset 1px -5px 5px 0.5px $normalcolor, 0px 3px 0px 3px $darkercolor;
+box-shadow: inset 1px -5px 5px 0.5px $normalcolor, 0px 3px 0px 3px $darkercolor;
 }
 
 
