@@ -1,6 +1,6 @@
 <template>
-  <div >
-    
+  <div class="home">
+
       <div class="populartitle font-bold text-5xl mt-12">Popular Movies  
 
       </div>
@@ -9,7 +9,7 @@
 
 <div  v-for="film in movie" :key="film" >
   <div class="moviesall">
-    <div class="movietitle mt-12">
+    <div class="movietitle ">
 
   {{film.name || film.title }}
 </div>
@@ -101,8 +101,16 @@ html {
 
 body {
   background-color: $normalcolor;
+  animation: turn2 5s;
   
 }
+
+.home {
+      animation-name: turn;
+animation-duration: 5s;
+}
+
+
 
 .populartitle {
   color: white !important;
@@ -118,16 +126,15 @@ margin-bottom: 35px;
 }
 
 .moviesall {
-    animation-name: turn;
-animation-duration: 2s;
+
 cursor:pointer;
 -moz-box-shadow: inset 0px 0px 5px 1px $darkercolor;
 box-shadow: inset 0px 0px 5px 1px $darkercolor;
 -webkit-box-shadow: inset 0px 0px 5px 1px $darkercolor;
 
-padding-top:0.02px;
+padding-top:20px;
 padding-bottom:20px;
-
+border-radius:$radius;
 margin:15px;
 }
 
@@ -195,8 +202,20 @@ border-bottom:2px $darkercolor dashed;
 }
 
 @keyframes turn {
-  from { filter:grayscale(100%)}
-  to {  filter:grayscale(0%)}
+  from {  
+     filter:brightness(0%)
+  
+  }
+  to {   filter:brightness(100%);}
+}
+
+@keyframes turn2 {
+  from {  
+    background-color:black;
+    
+  
+  }
+  to {    background-color: $normalcolor;}
 }
 
 @-webkit-keyframes cutup {
