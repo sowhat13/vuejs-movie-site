@@ -159,10 +159,17 @@ display:flex;
 margin:0px;
 padding:0px;
 width: 100%;
-z-index: 1020;
+z-index: 1020 !important;
 justify-content:center;
 text-align: center;
 max-height:50px;
+position:relative;
+top:0;
+
+* {
+  z-index: 1020 !important;
+}
+
  a {
    color:White;
    text-decoration:none;
@@ -174,6 +181,7 @@ font-size: 20px;
 text-transform:uppercase;
 font-weight: bold;
 margin:auto 20px;
+
  }
 
 img{
@@ -183,6 +191,7 @@ img{
   min-height: 90px;
   border-radius:0 0 50% 50%;
  box-shadow: 0 10px 0px -5px $lightcolor, 0 14px 0px -7px $darkcolor;
+
 }
 
 }
