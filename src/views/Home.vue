@@ -83,13 +83,8 @@ html {
 
 body {
   background-color: $normalcolor;
-  animation: turn2 5s;
 }
 
-.home {
-  animation-name: turn;
-  animation-duration: 5s;
-}
 
 .populartitle {
   color: white !important;
@@ -182,9 +177,11 @@ body {
 @keyframes turn {
   from {
     filter: brightness(0%);
+    opacity:0.2;
   }
   to {
     filter: brightness(100%);
+     opacity:1;
   }
 }
 
@@ -240,8 +237,45 @@ body {
   }
 }
 
+@keyframes rotateright {
+  0% {
+    -webkit-transform: translateX(0) rotate(30);
+            transform: translateX(0) rotate(30);
+  }
+  100% {
+    -webkit-transform: translateX(2000px) rotate(360deg);
+            transform: translateX(2000px) rotate(360deg);
+  }
+}
+
 .moviesall:hover .movietitle {
+
+
   animation: cutup 0.5s forwards;
+  
+}
+
+.moviesall:active .movietitle {
+
+
+  animation: rotateright 3s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  
+}
+
+.fade-enter-active, .fade-leave-active {
+   animation: turn 1s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    animation: turn 1s;
+}
+
+@keyframes fade {
+  from {
+    opacity:0.2
+  }
+  to {
+    opacity:1;
+  }
 }
 
 .movietitle2 {
