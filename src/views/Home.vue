@@ -267,6 +267,8 @@ body {
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     animation: turn 1s;
+
+
 }
 
 @keyframes fade {

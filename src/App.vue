@@ -158,7 +158,7 @@ text-shadow: 3px 3px $normalcolor, 5px 5px $darkcolor;
 
 
 .netnav {background-color: $lightercolor;
-box-shadow: 0px 0px 0px 5px $lightcolor, 0 0 0px 7px $darkcolor;
+box-shadow: 0px 0px 0px 5px $lightcolor, 0 0 0px 7px $darkcolor, 0 0 5px 10px $darkercolor;
 display:flex;
 margin:0px;
 padding:0px;
@@ -194,7 +194,7 @@ img{
   max-width: 180px;
   min-height: 90px;
   border-radius:0 0 50% 50%;
- box-shadow: 0 10px 0px -5px $lightcolor, 0 14px 0px -7px $darkcolor;
+ box-shadow: 0 10px 0px -5px $lightcolor, 0 14px 0px -7px $darkcolor,  0 20px 5px -10px $darkercolor;;
 
 }
 

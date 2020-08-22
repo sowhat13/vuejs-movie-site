@@ -3,10 +3,10 @@
 
 
       <div
-           :style="`background:url(https://image.tmdb.org/t/p/original${backgroundImage()});background-size:cover` "
+           :style="`background:url(https://image.tmdb.org/t/p/original${backgroundImage()});` "
        class="bum grid grid-cols-1 md:flex mx-auto justify-center text-center ">
  
-          <div class="overviewdetail none1  flex flex-col ">
+          <div class="overviewdetail none1 w-5/12  flex flex-col ">
             
              <div class="title3 font-bold  text-2xl">Overview</div>
 <div class="overview ">
@@ -27,7 +27,7 @@
           </div>
 
 
- <div class="overviewdetail2 hidden">
+ <div class="overviewdetail2 w-2/12 hidden">
     <div class="imageboxx mx-auto ">
     <div class="populartitle2 font-bold text-2xl">{{movie.title || movie.name}}</div>
 
@@ -39,21 +39,29 @@
 
 <div class="flex-col text-center mb-auto">
                      <div class="desc2">
-              <i class="fas fa-calendar-day mr-1"></i>
+              <i class="fas fa-calendar-day mr-1"> </i>
              Release Date: {{movie.release_date}}
             </div>
 
             <div class="desc2">
-              <i class="fas fa-heart"></i>
+              <i class="fas fa-heart mr-1"></i>
 Vote Average:
               {{movie.vote_average}}
             </div>
 
             <div class="desc2">
-              <i class="fas fa-fire-alt"></i>
+              <i class="fas fa-fire-alt mr-1"></i>
               Popularity:
               {{movie.popularity}}
             </div>
+<div class="desc2 flex flex-wrap">
+  <i class="fas fa-globe mr-1"></i> Languages:            
+<div
+    :key="lang.id"
+            v-for="lang in movie.spoken_languages"
+ class="mx-1 ">
+ {{lang.name}}
+</div></div>
    </div>
    </div>
    </div>
@@ -68,18 +76,35 @@ Vote Average:
 
 
 
-           <div class="title3 font-bold  text-2xl">Genres</div>
-<div
-    :key="genre.id"
-            v-for="genre in movie.genres"
- class="overview">
-  {{genre.name}}
-</div>
+
 
           </div>
-   
-          <div class="overviewdetail">sdasdfsadf</div>
-  </div>
+   <div class="overviewdetail3 justify-center  flex-col w-1/1 md:w-5/12">
+     <div class="title3 font-bold text-2xl  ">Credits</div> 
+     <div class="overviewdetail4   text-center mx-auto  jutify-center ">
+           <div  class=" mx-auto"
+              v-for="credit in credits.slice(0,20)"
+            :key="credit.id + credit.cast_id"
+        >
+     <img
+                v-if="credit.profile_path"
+                :src="`https://image.tmdb.org/t/p/w500/${credit.profile_path}`"
+                class="profileimage"
+              />
+              <img
+                v-else
+                :src="`https://via.placeholder.com/500x690.png/5c615e/d9dedb?text=${credit.name}`"
+                class="profileimage"
+              />
+
+<div class="profile-name ">
+
+  {{ credit.name }}
+</div>
+          </div>  </div>
+
+
+  </div></div>
 
 
 
@@ -96,6 +121,7 @@ export default {
     return {
       movie: "",
       loading: true,
+         credits: '',
     };
   },
 
@@ -110,10 +136,20 @@ export default {
       return this.movie.backdrop_path
     },
 
+     async getCredits() {
+      const res = await axios.get(
+        `https://api.themoviedb.org/3/movie/${this.$route.params.id}/credits?api_key=cffed36e338abe3170a6f5872e6b2de6`
+      )
+      this.credits = res.data.cast
+      this.isLoading = false
+    },
+  
+
   },
 
   mounted() {
     this.getopmovies();
+      this.getCredits()
   },
 };
 </script>
@@ -131,8 +167,8 @@ $shadow: 2px 2px $normalcolor;
 
 .bum {
     border:solid 10px $lightercolor;
-
-background-position: center;
+background-size:cover !important;
+background-position:  center !important;
 background-repeat: no-repeat;
     outline:5px dashed $lightcolor;
     outline-offset: -8px;
@@ -232,10 +268,25 @@ padding:0px 25px
   padding:0 10px;
     text-align: center;
     display:flex;
-width:100%;
   background: rgb(240,120,140);
-background: linear-gradient(90deg, rgba(222,38,76,0.65) 0%, rgba(246,177,195,0.65) 50%, rgba(222,38,76,0.65) 100%);
- 
+// background: linear-gradient(90deg, rgba(129, 24, 24, 0.65)  0%, rgba(212, 82, 82, 0.65)  50%, rgba(228, 10, 10, 0.65) 100%);
+  background:rgba(0, 0, 0, 0.5)
+}
+
+.overviewdetail3 {
+  padding:0px 10px;
+    text-align: center;
+  background: rgb(240,120,140);
+// background: linear-gradient(90deg, rgba(129, 24, 24, 0.65)  0%, rgba(212, 82, 82, 0.65)  50%, rgba(228, 10, 10, 0.65) 100%);
+  background:rgba(0, 0, 0, 0.5)
+}
+
+.overviewdetail4 {
+  padding:20px 10px;
+    text-align: center;
+    display:flex;
+    flex-wrap: wrap;
+// background: linear-gradient(90deg, rgba(129, 24, 24, 0.65)  0%, rgba(212, 82, 82, 0.65)  50%, rgba(228, 10, 10, 0.65) 100%);
 }
 
 .overviewdetail2 {
@@ -243,9 +294,46 @@ background: linear-gradient(90deg, rgba(222,38,76,0.65) 0%, rgba(246,177,195,0.6
     text-align: center;
     display:flex;
 width:100%;
-  background: rgb(240,120,140);
-background: linear-gradient(90deg, rgba(222,38,76,0.65) 0%, rgba(246,177,195,0.65) 50%, rgba(222,38,76,0.65) 100%);
- 
+//   background: rgb(240,120,140);
+// background: linear-gradient(90deg, rgba(222,38,76,0.65) 0%, rgba(246,177,195,0.65) 50%, rgba(222,38,76,0.65) 100%);
+ background:rgba(0, 0, 0, 0.5)
 }
 
+
+
+.desc2 {
+  margin-top:15px;
+      color: white !important;
+  display: flex;
+  justify-content: center;
+padding:0 7px;
+  text-shadow: 1px 1px 5px $normalcolor;
+  text-align: center;
+  font-family: "Do Hyeon", sans-serif;
+  letter-spacing: 3px;
+}
+
+.profileimage {
+  min-width:76px;
+  min-height:76px;
+   max-width:76px;
+  max-height:76px;
+  object-fit: cover;
+  border-radius:50%;
+  margin:10px;
+cursor:pointer;
+  box-shadow: 0 0 0 2px white, 0 0 0 4px $lightcolor;
+}
+
+.profileimage:hover {
+ box-shadow: 0 0 0 2px white, 0 0 5px 4px $darkcolor;}
+
+.profile-name {
+    font-family: "Do Hyeon", sans-serif;
+  letter-spacing:1px;
+  font-size:12px;
+    text-shadow: 0px 2px 0px $darkcolor;
+    cursor:pointer;
+    max-width:96px;
+}
 </style>
