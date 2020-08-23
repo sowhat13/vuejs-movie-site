@@ -148,7 +148,7 @@ justify-content:center;
    padding-bottom:25px !important;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 950px) {
  .hidden {
   width:100% !important;
   border-bottom: dashed 5px $lightcolor;

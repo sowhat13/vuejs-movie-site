@@ -43,12 +43,12 @@ $shadow: 2px 2px $normalcolor;
 
 
 .curtain-container {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 1020;
+  z-index: 2000 !important;
   font-size: 100px;
   font-weight: bold;
   color: white;
@@ -65,28 +65,40 @@ letter-spacing: 15px;
   height: 120%;
   width: 100%;
   overflow: hidden;
-  z-index: 1020;
+  z-index: 2000 !important;
+
  pointer-events: none;
 animation: disnone 0.01s forwards;
 animation-delay: 2.9s;
+
 }
 
 .curtain-panel .curtain {
   width: 50%;
- background: url("https://image.freepik.com/free-photo/red-curtain-fabric-background-texture_38678-2804.jpg");
+    background-image: linear-gradient(
+    to right,
+    $lightcolor 0%,
+    $lightercolor 100%
+  );
+  background-repeat: repeat;
+  background-size: 25px;
   position: relative;
  pointer-events: none;
   display: flex;
   align-items: center;
   overflow: hidden;
-  box-shadow:0px 0px 250px 5px rgba(0,0,0, 0.5);
-
+  box-shadow:inset 0 0 10px 3px rgba(126, 11, 38, 0.9),0px 0px 250px 5px rgba(0,0,0, 0.5);
+  z-index: 2000 !important;
 }
+
+
 
 .right-curtain {
   animation:slide-right 2.5s forwards;
   animation-delay: 0.5s;
  pointer-events: none;
+  z-index: 2000 !important;
+
 
 }
 
@@ -94,6 +106,8 @@ animation-delay: 2.9s;
   animation:slide-left 2.5s forwards;
   animation-delay: 0.5s;
  pointer-events: none;
+  z-index: 2000 !important;
+
 }
 
 .curtain-panel .curtain:before {
@@ -102,6 +116,8 @@ animation-delay: 2.9s;
   width: 200%;
   position: absolute;
   top: 40%;
+  z-index: 2000 !important;
+
   line-height: 0;
  pointer-events: none;
 text-shadow: 3px 3px $normalcolor, 5px 5px $darkcolor;
@@ -123,19 +139,21 @@ text-shadow: 3px 3px $normalcolor, 5px 5px $darkcolor;
 
 @keyframes slide-left {
   0% {
-
+    background-position: -100px 0;
   }
   100% {
       transform: translateX(calc(-100% - 2rem ));
+          background-position: -200px 0;
   }
 }
 
 @keyframes slide-right {
   0% {
-
+  background-position: -100px 0;
   }
   100% {
       transform: translateX(calc(100% ));
+          background-position: 200px 0;
   }
 }
 
@@ -147,7 +165,7 @@ text-shadow: 3px 3px $normalcolor, 5px 5px $darkcolor;
   }
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 1025px) {
   .netnav {
     font-size:12px;
 

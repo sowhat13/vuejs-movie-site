@@ -13,7 +13,7 @@
 
         <div class="title3 font-bold text-2xl">Homepage</div>
         <div class="overview text-center">
-          <a target="_blank" class="text-center" href="`${movie.homepage}`">{{movie.homepage}}</a>
+          <a target="_blank" class="text-center" :href="`${movie.homepage}`">{{movie.homepage}}</a>
         </div>
 
         <div class="title3 font-bold text-2xl">Production Companies</div>
@@ -224,7 +224,7 @@ iframe:hover {
   padding-bottom: 25px !important;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 950px) {
   .hidden {
     width: 100% !important;
     border-bottom: dashed 5px $lightcolor;
@@ -291,6 +291,8 @@ iframe:hover {
   justify-content: center;
   max-width: 450px;
   overflow: hidden;
+  margin-right:auto;
+  margin-left:auto;
 }
 
 .detailsimage {
