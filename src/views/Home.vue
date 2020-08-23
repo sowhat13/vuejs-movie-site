@@ -1,10 +1,12 @@
 <template>
   <div class="home">
+
+
     <div class="populartitle font-bold text-5xl mt-20">Popular Movies</div>
 
     <div class="movieshow grid lg:grid-cols-4 grid-cols-1 md:grid-cols-2 gap-6">
       <div v-for="film in movie" :key="film">
-        <router-link :to="`/moviedetails/${film.id}/${film.name || film.title }`" >
+        <router-link :to="`/moviedetails/${film.id}/`" >
         <div class="moviesall shine">
           <div class="movietitle">{{film.name || film.title }}</div>
           <div class="mx-auto moviecomp">
@@ -34,18 +36,23 @@
        </router-link>
       </div>
     </div>
+    <theloading v-if="loading"> </theloading>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-
+import theloading from "../components/theloading"
 export default {
   data() {
     return {
       movie: "",
       loading: true,
     };
+  },
+
+    components:{
+    theloading,
   },
 
   methods: {
@@ -57,6 +64,8 @@ export default {
       this.loading = false;
     },
   },
+
+  
 
   mounted() {
     this.getpopmovies();
@@ -262,14 +271,12 @@ body {
   
 }
 
-.fade-enter-active, .fade-leave-active {
+.fade-enter-active {
    animation: turn 1s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    animation: turn 1s;
 
 
-}
+
 
 @keyframes fade {
   from {

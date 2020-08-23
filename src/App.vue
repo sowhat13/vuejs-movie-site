@@ -1,5 +1,7 @@
 <template>
   <div >
+   
+
     <div class="curtain-container">
     <div class="curtain-panel">
  
@@ -39,19 +41,6 @@ $radius: 10px;
 $margin: 10px;
 $shadow: 2px 2px $normalcolor;
 
-   body {
-      animation: ovrflw 5s;
-    }
-
-    @keyframes ovrflw {
-      0% {
-  overflow: hidden;
-      }
-
-       100% {
-         overflow: auto;
-       }
-    }
 
 .curtain-container {
   position: absolute;
@@ -63,7 +52,7 @@ $shadow: 2px 2px $normalcolor;
   font-size: 100px;
   font-weight: bold;
   color: white;
-
+ pointer-events: none;
 animation: disnone 0.01s forwards;
 animation-delay: 2.9s;
   text-shadow: $shadow;
@@ -77,7 +66,7 @@ letter-spacing: 15px;
   width: 100%;
   overflow: hidden;
   z-index: 1020;
-
+ pointer-events: none;
 animation: disnone 0.01s forwards;
 animation-delay: 2.9s;
 }
@@ -86,7 +75,7 @@ animation-delay: 2.9s;
   width: 50%;
  background: url("https://image.freepik.com/free-photo/red-curtain-fabric-background-texture_38678-2804.jpg");
   position: relative;
-
+ pointer-events: none;
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -97,14 +86,14 @@ animation-delay: 2.9s;
 .right-curtain {
   animation:slide-right 2.5s forwards;
   animation-delay: 0.5s;
-
+ pointer-events: none;
 
 }
 
 .left-curtain {
   animation:slide-left 2.5s forwards;
   animation-delay: 0.5s;
-
+ pointer-events: none;
 }
 
 .curtain-panel .curtain:before {
@@ -114,16 +103,18 @@ animation-delay: 2.9s;
   position: absolute;
   top: 40%;
   line-height: 0;
-
+ pointer-events: none;
 text-shadow: 3px 3px $normalcolor, 5px 5px $darkcolor;
 
 }
 
 .curtain-panel .left-curtain:before {
   left: 0;
+   pointer-events: none;
 }
 
 .curtain-panel .right-curtain:before {
+   pointer-events: none;
   right: 0;
 }
 
