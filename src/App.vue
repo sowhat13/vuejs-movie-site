@@ -147,6 +147,35 @@ text-shadow: 3px 3px $normalcolor, 5px 5px $darkcolor;
   }
 }
 
+@media only screen and (max-width: 800px) {
+  .netnav {
+    font-size:12px;
+
+     a {
+   color:White;
+   text-decoration:none;
+   margin:20px 10px !important;
+   text-shadow: 1px 1px $normalcolor, 3px 3px $darkcolor;
+font-family: 'Do Hyeon', sans-serif;
+letter-spacing: 3px;
+font-size: 12px !important;
+text-transform:uppercase;
+font-weight: bold;
+margin:auto 10px;
+
+ }
+
+img{
+  padding:12px;
+  background-color:$lightercolor;
+  max-width: 120px !important;
+  min-height: 60px !important;
+  border-radius:0 0 50% 50%;
+ box-shadow: 0 10px 0px -5px $lightcolor, 0 14px 0px -7px $darkcolor,  0 20px 5px -10px $darkercolor;;
+
+}
+  }
+}
 
 .netnav {background-color: $lightercolor;
 box-shadow: 0px 0px 0px 5px $lightcolor, 0 0 0px 7px $darkcolor, 0 0 5px 10px $darkercolor;
