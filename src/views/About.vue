@@ -1,8 +1,20 @@
 <template>
-  <div class="about">
+  <div>
 
 
-
-    <h1>This is an about page</h1>
+<myawesomecarousel > </myawesomecarousel>
   </div>
 </template>
+
+<script>
+import myawesomecarousel from "../components/myawesomecarousel"
+export default {
+components: {
+  myawesomecarousel
+}
+}
+</script>
+
+<style>
+
+</style>

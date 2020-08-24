@@ -3,9 +3,9 @@
      <div class="overviewdetail4   text-center mx-auto  jutify-center ">
 
 
-  <div v-for="credit in credits"
+  <div v-for="credit in credits.slice(0,count)"
             :key="`${credit.id} ${credit.credit_id}`"
-            class="mx-auto"
+            class="mx-auto w-1/4  justify-center items-center flex flex-col"
           >
         <router-link :to="`/moviedetails/${credit.id}/`">
         <div class="personsall">    <img
@@ -15,7 +15,7 @@
               />
               <img
                 v-else
-                :src="`https://via.placeholder.com/500x750.png/5c615e/d9dedb?text=${
+                :src="`https://via.placeholder.com/500x700.png/a20d1e/f6b1c3/d9dedb?text=${
                   credit.name || credit.character
                 }`"
                 class="profileimage"
@@ -27,8 +27,10 @@
   {{  credit.name || credit.character }}
 </div>
           </div>  
-    
           </div>
+    <div
+    @click="count += 8"
+     class="see justify-center text-center mx-auto flex my-5 bg-red-400 px-4 py-2 cursor-pointer font-bold rounded">See More</div>
 
 <skeleton v-if="loading"> </skeleton>
   </div>
@@ -42,7 +44,7 @@ export default {
 
      data() {
     return {
-    
+    count:16,
       loading: true,
          credits: '',
 }},

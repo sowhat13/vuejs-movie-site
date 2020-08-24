@@ -59,7 +59,6 @@
 <img 
  class="m-auto"
   :class="[isFocused ? 'imageall' : 'hiddens']"
-         v-if="movie.poster_path"
                 :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
 /> </div>
 
@@ -71,9 +70,10 @@
               />
     <img
               v-else
-              :src="`https://via.placeholder.com/500x700.png/5c615e/d9dedb?text=${movie.name}`"
+              :src="`https://via.placeholder.com/500x700.png/a20d1e/f6b1c3/d9dedb?text=${movie.name || movie.title}`"
               class="detailsimage cursor-pointer w-64"
             />
+
 
            </div>
           <div class="flex-col text-center mt-2 mb-auto">
@@ -109,22 +109,22 @@
         <div class="title3 font-bold text-2xl">Credits</div>
         <div class="overviewdetail4 text-center mx-auto jutify-center">
           <div
-            class="mx-auto"
+             class="mx-auto w-1/4  justify-center items-center flex flex-col"
             v-for="credit in credits.slice(0,20)"
             :key="credit.id + credit.cast_id"
           >
             <router-link  :to="`/persondetails/${credit.id}/${credit.name}`">
              
-             <div class="personsall">
+             <div class="personsall grid-cols-1  grid">
               <img
                 v-if="credit.profile_path"
                 :src="`https://image.tmdb.org/t/p/w500/${credit.profile_path}`"
-                class="profileimage"
+                class="profileimage    "
               />
               <img
                 v-else
-                :src="`https://via.placeholder.com/500x500.png/5c615e/d9dedb?text=${credit.name}`"
-                class="profileimage"
+                :src="`https://via.placeholder.com/500x700.png/a20d1e/f6b1c3/d9dedb?text=${credit.name}`"
+                class="profileimage "
               />
 
               <div class="profile-name">{{ credit.name }}</div>
@@ -339,8 +339,8 @@ iframe:hover {
 
 
 .overviewdetail {
-  padding: 0 10px;
   text-align: center;
+  padding:0 !important;
   display: flex;
   background: rgb(240, 120, 140);
   // background: linear-gradient(90deg, rgba(129, 24, 24, 0.65)  0%, rgba(212, 82, 82, 0.65)  50%, rgba(228, 10, 10, 0.65) 100%);

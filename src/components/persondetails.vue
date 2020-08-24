@@ -46,7 +46,7 @@
               />
     <img
               v-else
-              :src="`https://via.placeholder.com/500x700.png/5c615e/d9dedb?text=${person.name}`"
+              :src="`https://via.placeholder.com/500x700.png/a20d1e/f6b1c3/d9dedb?text=${person.name}`"
               class="detailsimage cursor-pointer w-64"
             />
 

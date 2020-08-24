@@ -42,6 +42,8 @@ $margin: 10px;
 $shadow: 2px 2px $normalcolor;
 
 
+
+
 .curtain-container {
   position: fixed;
   top: 0;
