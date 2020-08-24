@@ -8,7 +8,7 @@
             class="mx-auto"
           >
         <router-link :to="`/moviedetails/${credit.id}/`">
-             <img
+        <div class="personsall">    <img
                 v-if="credit.poster_path"
                 :src="`https://image.tmdb.org/t/p/w500/${credit.poster_path}`"
                 class="profileimage"
@@ -19,7 +19,7 @@
                   credit.name || credit.character
                 }`"
                 class="profileimage"
-              />
+              /> </div> 
             </router-link>
 
 <div class="profile-name ">
@@ -107,6 +107,17 @@ cursor:pointer;
     text-shadow: 0px 2px 0px $darkcolor;
     cursor:pointer;
     max-width:96px;
+}
+
+
+
+
+@keyframes slaceleft {
+  0% {transform:translateX(0) }
+  100% {transform:translateX(-500px) 
+  
+  }
+  
 }
 
 </style>

@@ -5,18 +5,18 @@
       class="bum grid grid-cols-1 md:flex mx-auto justify-center text-center"
     >
       <div class="overviewdetail none1 w-5/12 flex flex-col">
-        <div class="title3 font-bold text-2xl">Overview</div>
+        <div v-if="movie.overview"  class="title3 font-bold text-2xl">Overview</div>
         <div class="overview">{{movie.overview}}</div>
 
         <div class="title3 font-bold text-2xl">Genres</div>
         <div :key="genre.id" v-for="genre in movie.genres" class="overview">{{genre.name}}</div>
 
-        <div class="title3 font-bold text-2xl">Homepage</div>
+        <div v-if="movie.homepage" class="title3 font-bold text-2xl">Homepage</div>
         <div class="overview text-center">
           <a target="_blank" class="text-center" :href="`${movie.homepage}`">{{movie.homepage}}</a>
         </div>
 
-        <div class="title3 font-bold text-2xl">Production Companies</div>
+        <div  class="title3 font-bold text-2xl">Production Companies</div>
         <div class="yeyo mb-4">
           <div
             :key="company.id"
@@ -43,12 +43,39 @@
       <div class="overviewdetail2 w-2/12 hidden">
         <div class="imageboxx mx-auto">
           <div class="populartitle2 font-bold text-2xl">{{movie.title || movie.name}}</div>
+<div
+>
+<div v-if="isFocused"
+@click="onblur"
+ class="modalim">
+ <span
+ @click="onblur"
+  class="cursor-pointer font-bold text-3xl closerr">X  </span>
+  </div>
+  <div 
+  
+  :class="[isFocused ? 'topdiv' : 'hiddens']"
+  >
+<img 
+ class="m-auto"
+  :class="[isFocused ? 'imageall' : 'hiddens']"
+         v-if="movie.poster_path"
+                :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
+/> </div>
 
-          <img
-            class="detailsimage w-64"
-            :src="`https://image.tmdb.org/t/p/original${movie.poster_path}` "
-          />
+        <img 
+   @click="onclick"   
+         v-if="movie.poster_path"
+                :src="`https://image.tmdb.org/t/p/w500/${movie.poster_path}`"
+            class="detailsimage cursor-pointer w-64"
+              />
+    <img
+              v-else
+              :src="`https://via.placeholder.com/500x700.png/5c615e/d9dedb?text=${movie.name}`"
+              class="detailsimage cursor-pointer w-64"
+            />
 
+           </div>
           <div class="flex-col text-center mt-2 mb-auto">
             <div class="desc2">
               <i class="fas fa-calendar-day mr-1"></i>
@@ -86,7 +113,9 @@
             v-for="credit in credits.slice(0,20)"
             :key="credit.id + credit.cast_id"
           >
-            <router-link :to="`/persondetails/${credit.id}/${credit.name}`">
+            <router-link  :to="`/persondetails/${credit.id}/${credit.name}`">
+             
+             <div class="personsall">
               <img
                 v-if="credit.profile_path"
                 :src="`https://image.tmdb.org/t/p/w500/${credit.profile_path}`"
@@ -99,13 +128,13 @@
               />
 
               <div class="profile-name">{{ credit.name }}</div>
-            </router-link>
+         </div>   </router-link>
           </div>
         </div>
         <div class="mx-auto">
-          <div class="title3 mx-auto font-bold text-2xl">Trailers</div>
+          <div  class="title3 mx-auto font-bold text-2xl">Trailer</div>
             <iframe
-             @click="onfocus" @blur="onblur"
+           
      
               class="my-3 h-40 mx-auto  trailer"
               v-for="video in videos.slice(0,1)"
@@ -132,6 +161,7 @@ export default {
       loading: true,
       credits: "",
       videos: "",
+      isFocused:false,
     };
   },
 
@@ -140,11 +170,14 @@ export default {
   },
 
   methods: {
-    onfocus() {
-      console.log("focus");
+
+    onclick() {
+      console.log("click");
+         this.isFocused=true
     },
     onblur() {
       console.log("blur");
+         this.isFocused=false
     },
 
     async getopmovies() {
@@ -224,6 +257,8 @@ iframe:hover {
   padding-bottom: 25px !important;
 }
 
+
+
 @media only screen and (max-width: 950px) {
   .hidden {
     width: 100% !important;
@@ -299,6 +334,10 @@ iframe:hover {
   border-radius: $radius;
 }
 
+
+
+
+
 .overviewdetail {
   padding: 0 10px;
   text-align: center;
@@ -360,6 +399,17 @@ iframe:hover {
   box-shadow: 0 0 0 2px white, 0 0 0 4px $lightcolor;
 }
 
+
+
+
+@keyframes slaceleft {
+  0% {transform:translateX(0) }
+  100% {transform:translateX(-500px) 
+  
+  }
+  
+}
+
 .profileimage2 {
   min-width: 76px;
   min-height: 76px;
@@ -401,4 +451,58 @@ iframe:hover {
   cursor: pointer;
   max-width: 96px;
 }
+
+
+
+.closerr {
+  position:fixed;
+  right:5%;
+  top:2%;
+  color: white;
+  text-shadow:$shadow;
+  border:2px white solid;
+min-width:50px;
+min-height:50px;
+background-color:$lightcolor;
+  border-radius:50%;
+}
+
+.imageall {  
+ z-index:2000;   
+    position:fixed;
+height:90%;
+  border-radius:$radius; 
+  top:5%;
+}
+
+@media only screen and (max-width: 560px) {
+.imageall {
+  height:70%;
+  top:15%;
+}
+}
+
+
+
+
+.topdiv {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hiddens {
+  display:none;
+}
+
+.modalim {
+  position:fixed;
+  left:0; 
+  top:0;
+  width:100%;
+  height:100%;
+  background-color:rgba(0, 0, 0, 0.8);
+  z-index:1500
+}
+
 </style>

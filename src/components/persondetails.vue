@@ -5,7 +5,9 @@
        class="bum grid grid-cols-1 md:flex mx-auto justify-center text-center ">
  
           <div class="overviewdetail none1 w-5/12  flex flex-col ">
-                   <div class="title3 font-bold  text-2xl">Biography</div>
+                   <div v-if="person.biography"  class="title3 font-bold  text-2xl">Biography</div>
+        <div v-else  class="title3 font-bold  text-2xl">No Biography Found...</div>
+
 <div class="overview ">
   {{person.biography}}
 </div>
@@ -16,12 +18,39 @@
  <div class="overviewdetail2 w-2/12 hidden">
     <div class="imageboxx mx-auto ">
     <div class="populartitle2 font-bold text-2xl">{{person.name}}</div>
-
-        <img
+<div
+>
+<div v-if="isFocused"
+@click="onblur"
+ class="modalim">
+ <span
+ @click="onblur"
+  class="cursor-pointer font-bold text-3xl closerr">X  </span>
+  </div>
+  <div 
+  
+  :class="[isFocused ? 'topdiv' : 'hiddens']"
+  >
+<img 
+ class="m-auto"
+  :class="[isFocused ? 'imageall' : 'hiddens']"
+         v-if="person.profile_path"
                 :src="`https://image.tmdb.org/t/p/w500/${person.profile_path}`"
-            class="detailsimage w-64"
+/> </div>
+
+        <img 
+   @click="onclick"   
+         v-if="person.profile_path"
+                :src="`https://image.tmdb.org/t/p/w500/${person.profile_path}`"
+            class="detailsimage cursor-pointer w-64"
               />
-           
+    <img
+              v-else
+              :src="`https://via.placeholder.com/500x700.png/5c615e/d9dedb?text=${person.name}`"
+              class="detailsimage cursor-pointer w-64"
+            />
+
+           </div>
 <div class="flex-col text-center  justify-center  mx-auto mt-2 mb-auto">
             <div class="desc2">
               <i class="fas fa-calendar-day mr-1"> </i>
@@ -45,7 +74,9 @@
 
         <div class="overviewdetail none2 flex flex-col ">
             
-          <div class="title3 font-bold  text-2xl">Biography</div>
+        <div v-if="person.biography"  class="title3 font-bold  text-2xl">Biography</div>
+        <div v-else  class="title3 font-bold  text-2xl">No Biography Found...</div>
+
 <div class="overview ">
   {{person.biography}}
 </div>
@@ -79,6 +110,7 @@ export default {
       movie: "",
       loading: true,
 person:'',
+isFocused:false,
 };
   },
 
@@ -105,7 +137,17 @@ person:'',
       this.loading = false
     },
 
+    onclick() {
+      console.log("click");
+         this.isFocused=true
+    },
+    onblur() {
+      console.log("blur");
+         this.isFocused=false
+    },
+
   },
+  
 
   mounted() {
        this.getPerson()
@@ -312,4 +354,72 @@ cursor:pointer;
     cursor:pointer;
     max-width:96px;
 }
+
+
+
+.closerr {
+  position:fixed;
+  right:5%;
+  top:2%;
+  color: white;
+  text-shadow:$shadow;
+  border:2px white solid;
+min-width:50px;
+min-height:50px;
+background-color:$lightcolor;
+  border-radius:50%;
+}
+
+.imageall {  
+ z-index:2000;   
+    position:fixed;
+height:90%;
+  border-radius:$radius; 
+  top:5%;
+}
+
+@media only screen and (max-width: 560px) {
+.imageall {
+  height:70%;
+  top:15%;
+}
+}
+
+
+
+.topdiv {
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hiddens {
+  display:none;
+}
+
+.modalim {
+  position:fixed;
+  left:0; 
+  top:0;
+  width:100%;
+  height:100%;
+  background-color:rgba(0, 0, 0, 0.8);
+  z-index:1500
+}
+
+.populartitle2 {
+  color: white !important;
+  display: flex;
+  justify-content: center;
+  box-shadow: inset 5em 5em rgba(246, 177, 195, 0.95);
+  text-shadow: 3px 3px $normalcolor, 5px 5px $darkcolor;
+  background-size: 250px;
+  text-align: center;
+  font-family: "Do Hyeon", sans-serif;
+  letter-spacing: 10px;
+  margin-bottom: 35px;
+  max-width: 300px;
+}
+
+
 </style>

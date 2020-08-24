@@ -68,6 +68,7 @@ export default {
   
 
   mounted() {
+      window.title="hey";
     this.getpopmovies();
   },
 };
