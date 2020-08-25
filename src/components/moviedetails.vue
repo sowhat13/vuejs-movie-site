@@ -31,7 +31,7 @@
 
             <img
               v-else
-              :src="`https://via.placeholder.com/500x500.png/5c615e/d9dedb?text=${company.name}`"
+              :src="`https://via.placeholder.com/500x500.png/a20d1e/f6b1c3/d9dedb?text=${company.name}`"
               class="profileimage3 -cover mx-auto"
             />
 
@@ -107,10 +107,10 @@
       </div>
       <div class="overviewdetail3 justify-center flex-col w-1/1 md:w-5/12">
         <div class="title3 font-bold text-2xl">Credits</div>
-        <div class="overviewdetail4 text-center mx-auto jutify-center">
+        <div class="overviewdetail4 flex  text-center mx-auto  jutify-center ">
           <div
-             class="mx-auto w-1/4  justify-center items-center flex flex-col"
-            v-for="credit in credits.slice(0,20)"
+             class="mx-auto  items-center flex flex-col"
+            v-for="credit in credits.slice(0,count)"
             :key="credit.id + credit.cast_id"
           >
             <router-link  :to="`/persondetails/${credit.id}/${credit.name}`">
@@ -130,6 +130,17 @@
               <div class="profile-name">{{ credit.name }}</div>
          </div>   </router-link>
           </div>
+          
+          <skeleton v-if="loading"> </skeleton>
+       
+              <div
+    v-if="datacount > 16 "
+    @click="count += 8"
+         class="see justify-center text-center mx-auto flex my-5 bg-red-400 px-4 py-2 cursor-pointer font-bold  rounded">
+   Show More
+     <i class="fas fa-caret-down ml-1 my-auto"></i>
+     
+     </div>
         </div>
         <div class="mx-auto">
           <div  class="title3 mx-auto font-bold text-2xl">Trailer</div>
@@ -153,6 +164,8 @@
 <script>
 import axios from "axios";
 import theloading from "./theloading";
+import skeleton from "./skeleton";
+
 
 export default {
   data() {
@@ -162,11 +175,14 @@ export default {
       credits: "",
       videos: "",
       isFocused:false,
+         count: 16,
+                 datacount:'',
     };
   },
 
   components: {
     theloading,
+    skeleton,
   },
 
   methods: {
@@ -197,6 +213,7 @@ export default {
       );
       this.credits = res.data.cast;
       this.loading = false;
+          this.datacount = res.data.cast.length
     },
     async getVideos() {
       const res = await axios.get(
@@ -256,6 +273,21 @@ iframe:hover {
   border-bottom: dashed 5px $lightcolor;
   padding-bottom: 25px !important;
 }
+
+
+
+.see {
+    font-family: "Do Hyeon", sans-serif;
+  letter-spacing:1px;
+  font-size:16px;
+    text-shadow: 0px 2px 0px $darkcolor;
+    cursor:pointer;
+    min-width: 100%;
+    background-color: $lightcolor;
+}
+
+
+
 
 
 
@@ -351,6 +383,8 @@ iframe:hover {
   padding: 0px 10px;
   text-align: center;
   background: rgb(240, 120, 140);
+  display:flex;
+  
   // background: linear-gradient(90deg, rgba(129, 24, 24, 0.65)  0%, rgba(212, 82, 82, 0.65)  50%, rgba(228, 10, 10, 0.65) 100%);
   background: rgba(0, 0, 0, 0.5);
 }

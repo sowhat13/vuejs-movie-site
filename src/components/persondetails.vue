@@ -72,7 +72,7 @@
    </div>
    </div>
 
-        <div class="overviewdetail none2 flex flex-col ">
+        <div class="overviewdetail pb-4 none2 flex flex-col ">
             
         <div v-if="person.biography"  class="title3 font-bold  text-2xl">Biography</div>
         <div v-else  class="title3 font-bold  text-2xl">No Biography Found...</div>
@@ -248,7 +248,7 @@ padding:0px 25px;
 justify-content: center;
 max-width:450px;
 overflow:hidden;
-margin:0px auto 0px auto;
+margin:0px auto 20px auto;
 }
   
 .detailsimage {

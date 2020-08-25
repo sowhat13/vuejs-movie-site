@@ -1,8 +1,8 @@
 <template>
   <div class="skeletoncredit text-center mx-auto justify-center">
     <div
-      class="w-1/4 justify-center text-center mx-auto flex flex-col"
-      v-for="skeletoncount in 8"
+      class=" justify-center items-center text-center mx-auto flex flex-col"
+      v-for="skeletoncount in 16"
       :key="skeletoncount"
     >
       <div class="skeletongray mx-auto"></div>
@@ -33,7 +33,7 @@ $shadow: 2px 2px $normalcolor;
   max-height: 76px;
   border-radius: 50%;
   display:flex;
-  margin:10px auto;
+  margin: 10px;
   cursor: pointer;
   animation: placeholderShimmer 15s linear infinite;
   background-image: linear-gradient(
@@ -45,6 +45,7 @@ $shadow: 2px 2px $normalcolor;
 }
 
 .skeletoncredit {
+    padding: 20px 10px;
   padding-bottom: 10px;
   text-align: center;
   display: flex;

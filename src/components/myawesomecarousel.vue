@@ -3,15 +3,17 @@
     <div class="populartitle font-bold text-5xl mt-20">Popular Movies</div>
 
     <div class="pt-12 carouseltop">
-      <button @click="scroll_left" class="leftbtn">
+      <button
+       @click="scroll_left" class="leftbtn">
         <i class="fas fa-chevron-left"></i>
       </button>
-      <button @click="scroll_right" class="rightbtn">
+      <button
+       @click="scroll_right" class="rightbtn">
         <i class="fas fa-chevron-right"></i>
       </button>
       <div @mouseover="onMouseOver" @mouseleave="onMouseLeave"
         class="carouselimages flex flex-col mx-4 p-4"
-        v-for="film in movie.slice(0,19)"
+        v-for="film in movie.slice(0,18)"
         :key="film"
       >
         <router-link :to="`/moviedetails/${film.id}/`">
@@ -23,11 +25,13 @@
         </router-link>
       </div>
     </div>
+    <theloading v-if="loading"> </theloading>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import theloading from "../components/theloading";
 
 export default {
   data() {
@@ -36,7 +40,7 @@ export default {
       val: 0,
       movie: "",
       loading: true,
-      a: null,
+      a: this.val,
     };
   },
 
@@ -51,12 +55,12 @@ export default {
 
     scroll_left() {
       let content = document.querySelector(".carouseltop");
-      content.scrollLeft -= 850;
+      content.scrollLeft -= 848;
       this.val -= 1;
     },
     scroll_right() {
       let content = document.querySelector(".carouseltop");
-      content.scrollLeft += 850;
+      content.scrollLeft += 848;
     },
     scroll_lefter() {
       let content = document.querySelector(".carouseltop");
@@ -90,6 +94,10 @@ this.autoscroll();
 
 
     this.getpopmovies();
+  },
+
+    components:{
+    theloading,
   },
 };
 </script>
@@ -146,6 +154,7 @@ $shadow: 2px 2px $normalcolor;
 
 .carouselimages {
   min-width: 180px;
+  max-width:180px;
   cursor: pointer;
 }
 
@@ -187,7 +196,7 @@ $shadow: 2px 2px $normalcolor;
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  top: 385px;
+  top: 60%;
   font-size: 35px;
   font-weight: bold;
   opacity: 45%;
@@ -210,7 +219,7 @@ $shadow: 2px 2px $normalcolor;
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  top: 385px;
+  top: 60%;
   font-size: 35px;
   font-weight: bold;
   opacity: 45%;

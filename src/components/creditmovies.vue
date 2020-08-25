@@ -5,32 +5,32 @@
 
   <div v-for="credit in credits.slice(0,count)"
             :key="`${credit.id} ${credit.credit_id}`"
-            class="mx-auto w-1/4  justify-center items-center flex flex-col"
+            class="mx-auto     flex flex-col"
           >
         <router-link :to="`/moviedetails/${credit.id}/`">
         <div class="personsall">    <img
                 v-if="credit.poster_path"
                 :src="`https://image.tmdb.org/t/p/w500/${credit.poster_path}`"
                 class="profileimage"
+                id="profileimage"
               />
-              <img
-                v-else
-                :src="`https://via.placeholder.com/500x700.png/a20d1e/f6b1c3/d9dedb?text=${
-                  credit.name || credit.character
-                }`"
-                class="profileimage"
-              /> </div> 
+          </div> 
             </router-link>
 
-<div class="profile-name ">
+<div v-if="credit.poster_path" class="profile-name ">
 
   {{  credit.name || credit.character }}
 </div>
           </div>  
           </div>
     <div
+    v-if="datacount > 16 "
     @click="count += 8"
-     class="see justify-center text-center mx-auto flex my-5 bg-red-400 px-4 py-2 cursor-pointer font-bold rounded">See More</div>
+     class="see justify-center text-center mx-auto flex my-5 bg-red-400 px-4 py-2 cursor-pointer font-bold  rounded">
+     Show More
+     <i class="fas fa-caret-down ml-1 my-auto"></i>
+     
+     </div>
 
 <skeleton v-if="loading"> </skeleton>
   </div>
@@ -44,9 +44,12 @@ export default {
 
      data() {
     return {
-    count:16,
+    count: 16,
       loading: true,
          credits: '',
+         datacount:'',
+
+
 }},
 
  components:{
@@ -60,11 +63,14 @@ methods: {
       )
       this.credits = res.data.cast
       this.loading = false
+        this.datacount = res.data.cast.length
+    
     },
 },
 
  mounted() {
       this.getCredits();
+      
   },
 }
 </script>
@@ -82,11 +88,11 @@ $shadow: 2px 2px $normalcolor;
 
 
 .overviewdetail4 {
-  padding:20px 10px;
-    text-align: center;
-    display:flex;
-    flex-wrap: wrap;
-// background: linear-gradient(90deg, rgba(129, 24, 24, 0.65)  0%, rgba(212, 82, 82, 0.65)  50%, rgba(228, 10, 10, 0.65) 100%);
+  padding: 20px 10px;
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  // background: linear-gradient(90deg, rgba(129, 24, 24, 0.65)  0%, rgba(212, 82, 82, 0.65)  50%, rgba(228, 10, 10, 0.65) 100%);
 }
 
 .profileimage {
@@ -109,6 +115,16 @@ cursor:pointer;
     text-shadow: 0px 2px 0px $darkcolor;
     cursor:pointer;
     max-width:96px;
+}
+
+.see {
+    font-family: "Do Hyeon", sans-serif;
+  letter-spacing:1px;
+  font-size:16px;
+    text-shadow: 0px 2px 0px $darkcolor;
+    cursor:pointer;
+    background-color: $lightcolor;
+        min-width: 100%;
 }
 
 
