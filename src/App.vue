@@ -192,7 +192,7 @@ img{
   min-height: 60px !important;
   border-radius:0 0 50% 50%;
  box-shadow: 0 10px 0px -5px $lightcolor, 0 14px 0px -7px $darkcolor,  0 20px 5px -10px $darkercolor;;
-
+margin:auto auto;
 }
   }
 }
@@ -200,15 +200,15 @@ img{
 .netnav {background-color: $lightercolor;
 box-shadow: 0px 0px 0px 5px $lightcolor, 0 0 0px 7px $darkcolor, 0 0 5px 10px $darkercolor;
 display:flex;
-margin:0px;
-padding:0px;
+padding-top:7px;
+padding-left:5%;
 width: 100%;
 z-index: 1020 !important;
-justify-content:center;
 text-align: center;
 max-height:50px;
 position:relative;
 top:0;
+justify-content: center;
 
 * {
   z-index: 1020 !important;
@@ -217,15 +217,12 @@ top:0;
  a {
    color:White;
    text-decoration:none;
-   margin: 15px;
    text-shadow: 1px 1px $normalcolor, 3px 3px $darkcolor;
 font-family: 'Do Hyeon', sans-serif;
 letter-spacing: 5px;
 font-size: 20px;
 text-transform:uppercase;
 font-weight: bold;
-margin:auto 20px;
-
  }
 
 img{
@@ -235,7 +232,6 @@ img{
   min-height: 90px;
   border-radius:0 0 50% 50%;
  box-shadow: 0 10px 0px -5px $lightcolor, 0 14px 0px -7px $darkcolor,  0 20px 5px -10px $darkercolor;;
-
 }
 
 }
