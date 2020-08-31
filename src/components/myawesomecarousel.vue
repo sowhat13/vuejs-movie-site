@@ -25,11 +25,11 @@
 
  <div class="flex rldiv justify-space">
       <button
-       @click="scroll_left" class="leftbtn">
+       @click="scroll_left" class="lBtn">
         <i class="fas fa-chevron-left"></i>
       </button>
       <button
-       @click="scroll_right" class="rightbtn">
+       @click="scroll_right" class="rBtn">
         <i class="fas fa-chevron-right"></i>
       </button></div>
 
@@ -204,7 +204,7 @@ $shadow: 2px 2px $normalcolor;
   }
 }
 
-.leftbtn {
+.lBtn {
 
   background-color: $darkcolor;
   color: white;
@@ -220,14 +220,14 @@ $shadow: 2px 2px $normalcolor;
   z-index: 2000;
 }
 
-.leftbtn:hover {
+.lBtn:hover {
   opacity: 99%;
 }
-.rightbtn:hover {
+.rBtn:hover {
   opacity: 99%;
 }
 
-.rightbtn {
+.rBtn {
   background-color: $darkcolor;
   color: white;
   width: 75px;
