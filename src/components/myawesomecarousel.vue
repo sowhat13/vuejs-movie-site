@@ -214,7 +214,8 @@ $shadow: 2px 2px $normalcolor;
   border-radius: 50%;
   font-size: 35px;
   font-weight: bold;
-  opacity: 45%;
+  opacity: 45% !important;
+
   outline: none !important;
   z-index: 2000;
 }
@@ -234,7 +235,7 @@ $shadow: 2px 2px $normalcolor;
   border-radius: 50%;
   font-size: 35px;
   font-weight: bold;
-  opacity: 45%;
+  opacity: 45% !important;
   outline: none !important;
   z-index: 2000;
   border:1
