@@ -14,7 +14,7 @@
       <router-link to="/">Home</router-link> 
      <router-link to="/">  <img class="logo" src="https://3.bp.blogspot.com/-YjTqvcnZHZw/WmMRgRH9_WI/AAAAAAAABxo/hGQxNeDPLoMXyzBWiI8r7vrdvbYcnQ2UACLcBGAs/s1600/cinemaximum-logo.png" >
     </router-link> 
-      <router-link to="/about">About</router-link>
+      <router-link to="/Carousel">Carousel</router-link>
     </div>
 
     <transition name="fade">

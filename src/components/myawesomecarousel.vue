@@ -1,16 +1,13 @@
 <template>
-  <div class>
-    <div class="populartitle font-bold text-5xl mt-20">Popular Movies</div>
+  <div >
 
-    <div class="pt-12 carouseltop">
-      <button
-       @click="scroll_left" class="leftbtn">
-        <i class="fas fa-chevron-left"></i>
-      </button>
-      <button
-       @click="scroll_right" class="rightbtn">
-        <i class="fas fa-chevron-right"></i>
-      </button>
+    <div class="populartitles font-bold text-5xl ">Popular Movies</div>
+
+<div>
+
+
+    <div id="scrollbar-custom" class="pt-12 carouseltop">
+     
       <div @mouseover="onMouseOver" @mouseleave="onMouseLeave"
         class="carouselimages flex flex-col mx-4 p-4"
         v-for="film in movie.slice(0,18)"
@@ -25,6 +22,19 @@
         </router-link>
       </div>
     </div>
+
+ <div class="flex rldiv justify-space">
+      <button
+       @click="scroll_left" class="leftbtn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button
+       @click="scroll_right" class="rightbtn">
+        <i class="fas fa-chevron-right"></i>
+      </button></div>
+
+</div>
+
     <theloading v-if="loading"> </theloading>
   </div>
 </template>
@@ -83,7 +93,7 @@ clearInterval(this.a)
         content.scrollLeft -= 20000;
         this.val = 0;
       }
-    }, 4000);
+    }, 3000);
      return this.a
     },
    
@@ -117,7 +127,7 @@ $shadow: 2px 2px $normalcolor;
   scroll-behavior: smooth;
 }
 
-.populartitle {
+.populartitles {
   color: white !important;
   display: flex;
   justify-content: center;
@@ -127,7 +137,8 @@ $shadow: 2px 2px $normalcolor;
   text-align: center;
   font-family: "Do Hyeon", sans-serif;
   letter-spacing: 15px;
-  margin-bottom: 35px;
+  margin-top:100px;
+  margin-bottom:50px;
 }
 
 .profile-name {
@@ -141,7 +152,9 @@ $shadow: 2px 2px $normalcolor;
 
 .carouseltop {
   display: flex;
-  overflow: hidden;
+  margin-bottom:100px;
+  overflow-x: auto;
+  overflow-y:hidden;
   background-image: linear-gradient(
     to right,
     $lightcolor 0%,
@@ -150,6 +163,10 @@ $shadow: 2px 2px $normalcolor;
   background-repeat: repeat;
   background-size: 10px;
   box-shadow: 0 0 20px 5px $darkercolor;
+
+
+
+  
 }
 
 .carouselimages {
@@ -188,15 +205,13 @@ $shadow: 2px 2px $normalcolor;
 }
 
 .leftbtn {
-  position: absolute;
-  left: 5%;
+
   background-color: $darkcolor;
   color: white;
   background-color: $darkcolor;
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  top: 60%;
   font-size: 35px;
   font-weight: bold;
   opacity: 45%;
@@ -212,18 +227,54 @@ $shadow: 2px 2px $normalcolor;
 }
 
 .rightbtn {
-  position: absolute;
-  right: 5%;
   background-color: $darkcolor;
   color: white;
   width: 75px;
   height: 75px;
   border-radius: 50%;
-  top: 60%;
   font-size: 35px;
   font-weight: bold;
   opacity: 45%;
   outline: none !important;
   z-index: 2000;
+  border:1
 }
+
+.rldiv {
+  justify-content:space-between;
+  padding:0 15px 0 15px;
+  margin-top:-315px;
+
+}
+
+
+#scrollbar-custom::-webkit-scrollbar{
+		max-width:200px !important;
+		background-color:$lightcolor;
+    height:10px !important;
+	}
+	#scrollbar-custom::-webkit-scrollbar:vertical{
+		height:10px;
+ 
+	}
+	#scrollbar-custom::-webkit-scrollbar-track:vertical{
+		border:1px solid transparent;
+		border-radius:10px;
+    width:100px !important;
+    height:100px;
+
+	}
+	#scrollbar-custom::-webkit-scrollbar-thumb{
+		background-color:$darkcolor;
+		border:1px solid transparent;
+		border-radius:16px;
+	}
+	#scrollbar-custom::-webkit-scrollbar-thumb:hover{
+		background-color:$darkercolor;
+		border:1px solid transparent;
+	}
+	#scrollbar-custom::-webkit-scrollbar-thumb:active{
+		background-color:$darkercolor;
+		border:1px solid transparent;
+	}
 </style>

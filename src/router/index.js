@@ -21,8 +21,8 @@ const routes = [
     },
   },
   {    
-    path: '/about',
-    name: 'About',
+    path: '/carousel',
+    name: 'carousel',
     meta: {
       title: 'Home Page - Example App',
       metaTags: [
