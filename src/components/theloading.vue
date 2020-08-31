@@ -63,10 +63,6 @@ left:0;
 }
 
 
-@keyframes opacity {
-  0%{opacity:1}
-  100% {opacity:0}
-  
-}
+
 
 </style>
