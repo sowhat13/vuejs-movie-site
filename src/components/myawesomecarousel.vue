@@ -244,6 +244,7 @@ $shadow: 2px 2px $normalcolor;
   justify-content:space-between;
   padding:0 15px 0 15px;
   margin-top:-315px;
+  z-index:1999;
 
 }
 
