@@ -214,17 +214,17 @@ $shadow: 2px 2px $normalcolor;
   border-radius: 50%;
   font-size: 35px;
   font-weight: bold;
-  opacity: 45% !important;
+  opacity: 0.5 !important;
 
   outline: none !important;
   z-index: 2000;
 }
 
 .lBtn:hover {
-  opacity: 99%;
+  opacity: 1;
 }
 .rBtn:hover {
-  opacity: 99%;
+  opacity: 1;
 }
 
 .rBtn {
@@ -235,7 +235,7 @@ $shadow: 2px 2px $normalcolor;
   border-radius: 50%;
   font-size: 35px;
   font-weight: bold;
-  opacity: 45% !important;
+  opacity: 0.5 !important;
   outline: none !important;
   z-index: 2000;
   border:1
